@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>openQA :)</title>
+<link type="text/css" rel="stylesheet"
+	href="/openQA/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo" />
+<link
+	href="/openQA/javax.faces.resource/primefaces.css.xhtml?ln=primefaces&amp;v=4.0"
+	type="text/css" media="screen" rel="stylesheet"></link>
+<script
+	src="/openQA/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=4.0"
+	type="text/javascript"></script>
+<script
+	src="/openQA/javax.faces.resource/primefaces.js.xhtml?ln=primefaces&amp;v=4.0"
+	type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/sina.css" />
+<style type="text/css">
+.aboutInfoGraphBox {
+	vertical-align: top;
+}
+</style>
+</head>
+<body
+	style="height: 100%; width: 100%; margin: 0px; font-family: arial, sans-serif">
+	<!--START FLOAT MENU-->
+	<!-- Barra superior -->
+	<div
+		style="position: relative !important; top: 0px; left: 0px; z-index: 3;">
+		<div id="menu" class="menu"
+			style="height: 38px; font-size: 12px; font-weight: bold; vertical-align: middle; background-color: black;">
+			<div style="padding-top: 10px; float: left;">
+				<a style="margin-left: 15px; text-decoration: none;" href="./">
+					<span>Search</span>
+				</a> <a style="margin-left: 15px; color: white; text-decoration: none;"
+					href="samples.xhtml"> <span>Samples</span>
+				</a> <a style="margin-left: 15px; text-decoration: none;"
+					href="about.xhtml"> <span>About</span>
+				</a>
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>Team</span>
+					</a-->
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>Publications</span>
+					</a-->
+				<a style="margin-left: 15px; text-decoration: none;" target="_blank"
+					href="http://aksw.org"> <span>AKSW</span>
+				</a>
+			</div>
+			<span> <a class="button_p"
+				style="float: right; height: 30px; width: 64px; margin-top: 3px; margin-right: 15px; text-align: center; vertical-align: middle;"
+				href="admin/manager.xhtml"> <img style="margin-top: 3px;"
+					height="26" width="26" src="resources/images/settings.png"
+					alt="Manager" />
+			</a>
+			</span>
+		</div>
+	</div>
+	<div>
+		<span>
+			<div>
+				<div style="margin-top: 10px; margin-left: 10px;">
+					<a href="./"><div align="left"
+							style="background: url(resources/images/logo.png) no-repeat; background-size: 75px 40px; height: 40px; width: 75px; position: absolute;"></div></a>
+					<input id="searchInput" type="text"
+						class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+						style="width: 550px; font-size: x-large; height: 40px; position: relative; margin-left: 90px; top: 2px;"
+						onkeypress="event.keyCode==13?window.location.href='search?q='+searchInput.value:false;"
+						onkeyup="h.href='search?q='+searchInput.value;r.href='search?q='+searchInput.value+'&amp;content=sparql';"
+						value="search samples" /> <a id="h" class="button_go"
+						style="margin-left: 10px;" href="search?q=">Graph Search</a> <a
+						id="r" class="button_robot" href="search?q=&amp;i=r">I´m a
+						robot</a>
+				</div>
+			</div>
+		</span>
+		<div style="font-weight: bold; margin-top: 10px;">
+			<!-- >a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>Web</span>
+					</a>
+					<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>DBpedia</span>
+					</a>
+					<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>Life Science</span>
+					</a>
+					<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>Geo</span>
+					</a-->
+		</div>
+		<hr class="ui-separator ui-state-default ui-corner-all" />
+	</div>
+	<!-- >div>
+				<a style="margin-left: 20px;" href="/main/data.html">
+						<span>Garota da Gávea</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Tom Jobin</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Bossa Nova</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Brazil</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Rio de Janeiro</span>
+				</a>
+			</div-->
+	<!-- ui:repeat-->
+	<div
+		style="background-color: rgb(241, 241, 241); box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25); margin: 10px; padding: 0px 10px 10px 10px;">
+		<h1>Search Samples</h1>
+		<div>
+			<div style="padding: 0px 10px 10px 10px;">
+				<h:outputText>
+					<h2>Entities</h2>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=Louis Pasteur">Louis
+											Pasteur</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=Ayrton Senna">Ayrton Senna</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<h2>Geo Entities</h2>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=Leipzig">Leipzig</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=Berlin">Berlin</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<h2>Sets</h2>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=give me Apollo 14 astronauts">give
+											me Apollo 14 astronauts</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank"
+										href="search?q=List the children of Margaret Thatcher">List
+											the children of Margaret Thatcher.</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<h2>Others</h2>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=What is the longest river">What
+											is the longest river?</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank" href="search?q=Who developed Minecraft">Who
+											developed Minecraft?</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="ui-messages ui-widget"
+						style="max-width: 500px; text-align: left; font-size: 12px;"
+						aria-live="polite" data-summary="data-summary"
+						data-detail="data-detail">
+						<div class="ui-messages-info ui-corner-all">
+							<ul>
+								<li><span class="ui-messages-info-summary"> <a
+										target="_blank"
+										href="search?q=What is the time zone of Salt Lake City">What
+											is the time zone of Salt Lake City</a>
+								</span></li>
+							</ul>
+						</div>
+					</div>
+				</h:outputText>
+			</div>
+		</div>
+	</div>
+	<!--  /ui:repeat-->
+</body>
+</html>

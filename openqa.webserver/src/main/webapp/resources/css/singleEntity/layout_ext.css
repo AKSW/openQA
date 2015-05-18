@@ -1,0 +1,49 @@
+.kno-ecr-pt {
+	color: #000;
+	font-size: 30px;
+	font-weight: normal;
+}
+
+.kno-ecr-st {
+	color: #999;
+	font-size: 13px;
+}
+
+.kno-ecr-st-val {
+	padding-right: 5px;
+}
+
+.mod {
+	list-style: none !important;
+}
+
+.kno-desca {
+	white-space: nowrap;
+}
+
+.kno-fh .fl {
+	color: #222;
+	font-weight: bolder;
+}
+
+.kno-fh {
+	font-weight: bolder;
+}
+
+.knop {
+	font-size: 13px;
+	color: #222;
+}
+
+.kno-f {
+	margin: 7px 0 0;
+}
+
+.kno-ma {
+	margin: 0 0 20px;
+}
+
+.kno-desc {
+	overflow: hidden;
+	margin: 10px 0 13px;
+}

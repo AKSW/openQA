@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>openQA :)</title>
+<link type="text/css" rel="stylesheet"
+	href="/openQA/javax.faces.resource/theme.css.xhtml?ln=primefaces-aristo" />
+<link
+	href="/openQA/javax.faces.resource/primefaces.css.xhtml?ln=primefaces&amp;v=4.0"
+	type="text/css" media="screen" rel="stylesheet"></link>
+<script
+	src="/openQA/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=4.0"
+	type="text/javascript"></script>
+<script
+	src="/openQA/javax.faces.resource/primefaces.js.xhtml?ln=primefaces&amp;v=4.0"
+	type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/sina.css" />
+<style type="text/css">
+.aboutInfoGraphBox {
+	vertical-align: top;
+}
+</style>
+</head>
+<body
+	style="height: 100%; width: 100%; margin: 0px; font-family: arial, sans-serif">
+	<!--START FLOAT MENU-->
+	<!-- Barra superior -->
+	<div
+		style="position: relative !important; top: 0px; left: 0px; z-index: 3;">
+		<div id="menu" class="menu"
+			style="height: 38px; font-size: 12px; font-weight: bold; vertical-align: middle; background-color: black;">
+			<div style="padding-top: 10px; float: left;">
+				<a style="margin-left: 15px; text-decoration: none;" href="./">
+					<span>Search</span>
+				</a> <a style="margin-left: 15px; text-decoration: none;"
+					href="samples.xhtml"> <span>Samples</span>
+				</a> <a style="margin-left: 15px; color: white; text-decoration: none;"
+					href="about.xhtml"> <span>About</span>
+				</a>
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>Team</span>
+					</a-->
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>Publications</span>
+					</a-->
+				<a style="margin-left: 15px; text-decoration: none;" target="_blank"
+					href="http://aksw.org"> <span>AKSW</span>
+				</a>
+			</div>
+			<span> <a class="button_p"
+				style="float: right; height: 30px; width: 64px; margin-top: 3px; margin-right: 15px; text-align: center; vertical-align: middle;"
+				href="admin/manager.xhtml"> <img style="margin-top: 3px;"
+					height="26" width="26" src="resources/images/settings.png"
+					alt="Manager" />
+			</a>
+			</span>
+		</div>
+	</div>
+	<div>
+		<span>
+			<div>
+				<div style="margin-top: 10px; margin-left: 10px;">
+					<a href="./"><div align="left"
+							style="background: url(resources/images/logo.png) no-repeat; background-size: 75px 40px; height: 40px; width: 75px; position: absolute;"></div></a>
+					<input id="searchInput" type="text"
+						class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+						style="width: 550px; font-size: x-large; height: 40px; position: relative; margin-left: 90px; top: 2px;"
+						onkeypress="event.keyCode==13?window.location.href='search?q='+searchInput.value:false;"
+						onkeyup="h.href='search?q='+searchInput.value;r.href='search?q='+searchInput.value+'&amp;content=sparql';"
+						value="about openqa" /> <a id="h" class="button_go"
+						style="margin-left: 10px;" href="search?q=">Graph Search</a> <a
+						id="r" class="button_robot" href="search?q=&amp;content=sparql">I´m a
+						robot</a>
+				</div>
+			</div>
+		</span>
+		<div style="font-weight: bold; margin-top: 10px;">
+			<!-- >a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>Web</span>
+					</a>
+					<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>DBpedia</span>
+					</a>
+					<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>Life Science</span>
+					</a>
+					<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+						<span>Geo</span>
+					</a-->
+		</div>
+		<hr class="ui-separator ui-state-default ui-corner-all" />
+	</div>
+	<!-- >div>
+				<a style="margin-left: 20px;" href="/main/data.html">
+						<span>Garota da Gávea</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Tom Jobin</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Bossa Nova</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Brazil</span>
+				</a>
+				<a style="margin-left: 15px;" href="/main/data.html">
+						<span>Rio de Janeiro</span>
+				</a>
+			</div-->
+	<!-- ui:repeat-->
+	<div
+		style="background-color: rgb(241, 241, 241); box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25); margin: 10px; padding: 0px 10px 10px 10px;">
+		<h1>About</h1>
+		<div>
+			<div style="padding: 0px 10px 10px 10px;">
+				<h:outputText>
+								Billions of facts pertaining to a multitude of domains are now available on the Web as RDF data.
+								However, accessing this data is still a difficult endeavour for non-expert users.
+								In addition, developing and evaluating question answering systems to alleviate this problem is also a very complex task.
+								We present openQA, a modular open-source framework for the development and evaluation of question answering systems.
+								We show how openQA can be used by integrating two state-of-the-art question answering systems, i.e., SINA and TBSL.
+								The resulting instantiation of openQA can combine the results of the two frameworks as well as use one of the framework as a fallback for the other.
+								We demonstrate the different processing steps from a question to the corresponding answer.
+							</h:outputText>
+			</div>
+		</div>
+	</div>
+	<!--  /ui:repeat-->
+</body>
+</html>

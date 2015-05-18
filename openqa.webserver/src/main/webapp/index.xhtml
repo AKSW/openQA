@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type"
+		content="text/javascript; charset=UTF-8"></meta>
+	<title>openQA :)</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/sina.css" />
+</h:head>
+<h:body
+	style="height: 100%; width: 100%;margin:0px;font-family:arial,sans-serif"
+	onload="h.href='search?q='+searchInput.value;r.href='search?q='+searchInput.value+'&amp;content=sparql';">
+	<!--START FLOAT MENU-->
+	<!-- Barra superior -->
+	<div
+		style="position: relative !important; top: 0px; left: 0px; z-index: 3;">
+		<div id="menu" class="menu"
+			style="height: 38px; font-size: 12px; font-weight: bold; vertical-align: middle; background-color: black;">
+			<div style="padding-top: 10px; float: left;">
+				<a style="margin-left: 15px; color: white; text-decoration: none;"
+					href="./"> <span>Search</span>
+				</a> <a style="margin-left: 15px; text-decoration: none;"
+					href="samples.xhtml"> <span>Samples</span>
+				</a>
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>API</span>
+					</a-->
+				<a style="margin-left: 15px; text-decoration: none;"
+					href="about.xhtml"> <span>About</span>
+				</a>
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>Team</span>
+					</a-->
+				<!-- a style="margin-left: 15px; text-decoration: none;" href="/main/data.html">
+						<span>Publications</span>
+					</a-->
+				<a style="margin-left: 15px; text-decoration: none;"
+					href="http://aksw.org"> <span>AKSW</span>
+				</a>
+			</div>
+			<span> <a class="button_p"
+				style="float: right; height: 30px; width: 64px; margin-top: 3px; margin-right: 15px; text-align: center; vertical-align: middle;"
+				href="admin/manager.xhtml"> <img style="margin-top: 3px;"
+					height="26" width="26" src="resources/images/settings.png"
+					alt="Manager" />
+			</a>
+			</span>
+		</div>
+	</div>
+	<div style="margin-top: 120px;">
+		<span>
+			<center>
+				<div align="left"
+					style="background: url(resources/images/logo_SINA.png) no-repeat; background-size: 175px 90px; height: 90px; width: 175px; margin-bottom: 10px;" />
+				<p:inputText id="searchInput"
+					onkeypress="event.keyCode==13?window.location.href='search?q='+searchInput.value:false;"
+					onkeyup="h.href='search?q='+searchInput.value;r.href='search?q='+searchInput.value+'&amp;content=sparql';"
+					style="width: 550px;font-size: x-large;height: 45px;" />
+				<div style="margin-top: 10px;">
+					<a id="h" class="button_go" href="search?q=">Graph Search</a> <a
+						id="r" class="button_robot" href="search?q=&amp;content=sparql">I´m a
+						robot</a>
+				</div>
+				<div style="margin-top: 35px; font-size: small;">
+					Powered by <a target="_blank" href="http://aksw.org">AKSW</a> team
+				</div>
+				<div class="ui-messages ui-widget"
+					style="max-width: 400px; text-align: left; font-size: 12px;"
+					aria-live="polite" data-summary="data-summary"
+					data-detail="data-detail">
+					<div class="ui-messages-info ui-corner-all">
+						<a href="#" class="ui-messages-close"
+							onclick="$(this).parent().slideUp();return false;"><span
+							class="ui-icon ui-icon-close"></span></a><span
+							class="ui-messages-info-icon"></span>
+						<ul>
+							<li><span class="ui-messages-info-summary">Info</span><span
+								class="ui-messages-info-detail">Try some of the search <a
+									target="_blank" href="samples.xhtml">samples</a>!
+							</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-messages ui-widget"
+					style="max-width: 400px; text-align: left; font-size: 12px;"
+					aria-live="polite" data-summary="data-summary"
+					data-detail="data-detail">
+					<div class="ui-messages-warn ui-corner-all">
+						<a href="#" class="ui-messages-close"
+							onclick="$(this).parent().slideUp();return false;"><span
+							class="ui-icon ui-icon-close"></span></a><span
+							class="ui-messages-warn-icon"></span>
+						<ul>
+							<li><span class="ui-messages-warn-summary">Warning</span><span
+								class="ui-messages-warn-detail">openQA uses <a
+									target="_blank" href="http://dbpedia.org">DBpedia</a>, a public
+									live knowledge base, and depends on its availability to provide
+									a good experience. We apologize for any inconvenience occurring
+									during your search!
+							</span></li>
+						</ul>
+					</div>
+				</div>
+			</center>
+		</span>
+	</div>
+</h:body>
+</html>

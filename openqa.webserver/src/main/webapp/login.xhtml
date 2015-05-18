@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type"
+		content="text/javascript; charset=UTF-8"></meta>
+	<title>openQA - Login</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/login.css" />
+</h:head>
+<h:body>
+	<section class="container">	
+		<div class="login">
+			<h1>Login to openQA</h1>
+			<h:form>
+				<p:messages id="messages" showDetail="true" closable="true"/>
+				<p>
+					<p:inputText id="login" value="#{loginSessionController.login}" />
+					<p:watermark for="login" value="Login" />
+				</p>
+				<p>
+					<p:password id="pass" value="#{loginSessionController.password}" />
+					<p:watermark for="pass" value="Password" />
+				</p>
+				<!-- p class="remember_me">
+		          <label>
+		            <input type="checkbox" name="remember_me" id="remember_me">
+		            Remember me on this computer
+		          </label>
+		        </p-->
+				<p class="submit">
+					<p:commandButton action="#{loginSessionController.login}"
+						value="Login" ajax="true" process="@form" update="@form"/>
+				</p>
+			</h:form>
+		</div>
+		<div class="login-help">
+			<!--p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p-->
+		</div>
+	</section>
+	<!--section class="about">
+	    <p class="about-links">
+	      <a href="http://www.cssflow.com/snippets/login-form" target="_parent">View Article</a>
+	      <a href="http://www.cssflow.com/snippets/login-form.zip" target="_parent">Download</a>
+	    </p>
+	    <p class="about-author">
+	      &copy; 2012&ndash;2013 <a href="http://thibaut.me" target="_blank">Thibaut Courouble</a> -
+	      <a href="http://www.cssflow.com/mit-license" target="_blank">MIT License</a><br>
+	      Original PSD by <a href="http://www.premiumpixels.com/freebies/clean-simple-login-form-psd/" target="_blank">Orman Clark</a>
+	  </section-->
+</h:body>
+</html>

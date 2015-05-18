@@ -1,0 +1,716 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type"
+		content="text/javascript; charset=UTF-8"></meta>
+	<title>openQA manager</title>
+	<style type="text/css">
+.appPanel {
+	width: 30%;
+	vertical-align: top;
+	height: 100%;
+}
+
+.descPanel {
+	width: 100%;
+}
+
+.ui-datatable .ui-datatable-footer {
+	text-align: right;
+}
+</style>
+</h:head>
+<h:body>
+	<div id="header" class="ui-widget ui-widget-header"
+		style="margin-left: -10px; margin-right: -10px; margin-top: -10px;">
+		<h2 style="margin-left: 10px;">openQA Manager Panel</h2>
+		<p:commandLink id="ajax" action="#{loginSessionController.logout}"
+			style="margin-right:20px;position: absolute;top: 25px;right: 10px;">
+			<h:outputText value="logout" />
+		</p:commandLink>
+	</div>
+	<p:outputPanel style="margin-top:20px;">
+		<p:tabView cache="false" dynamic="false">
+			<p:tab title="Control Panel">
+				<p:tabView>
+					<p:tab title="Status">
+						<h:form prependId="false">
+							<p:poll interval="2" update="engineStatus" />
+							<h:panelGrid id="engineStatus" columns="2">
+								<h:outputText value="Runtime: " />
+								<h:outputText styleClass="outputLabel"
+									value="#{statisticsSessionController.timeRunning} hours" />
+
+								<h:outputText value="Number of queries: " />
+								<h:outputText styleClass="outputLabel"
+									value="#{statisticsSessionController.numberOfQueries}" />
+
+								<h:outputText value="Used Memory: " />
+								<h:outputText styleClass="outputLabel"
+									value="#{statisticsSessionController.usedMemory} MB" />
+
+								<h:outputText value="Errors: " />
+								<h:outputText styleClass="outputLabel"
+									value="#{statisticsSessionController.numberOfErrors}" />
+
+								<h:outputText value="Queries without results: " />
+								<h:outputText styleClass="outputLabel"
+									value="#{statisticsSessionController.queriesWithoutResult}" />
+									
+								<h:outputText value="Active Threads: " />
+								<h:outputText styleClass="outputLabel"
+									value="#{statisticsSessionController.activeThreads}" />
+							</h:panelGrid>
+						</h:form>
+					</p:tab>
+					<p:tab title="Log">
+						<h:form prependId="false">
+							<p:inputTextarea id="logConsole" rows="20"
+								value="#{engineLogConsoleController.log}" readonly="true"
+								resizable="false"
+								style="width:100%; height:100%;margin-bottom:10px;"
+								autoResize="false" />
+							<div style="height: 35px;">
+								<p:commandButton value="Clear"
+									actionListener="#{engineLogConsoleController.cleanLogMessages}"
+									style="float:right;" update="logConsole" />
+								<p:commandButton value="Refresh" update="logConsole"
+									style="float:right;margin-right:5px;" icon="ui-icon-refresh"/>
+								<p:commandButton value="Download" ajax="false"
+									style="float:right;margin-right:15px;">
+									<p:fileDownload value="#{engineLogConsoleController.file}" />
+								</p:commandButton>
+							</div>
+						</h:form>
+					</p:tab>
+					<p:tab title="Memory">
+						<h:form prependId="false">
+							<p:poll interval="60" update="memoryGraph" />
+							<p:graphicImage id="memoryGraph" cache="false" value="#{engineLogConsoleController.chart}" />
+							<!-- p:lineChart id="memoryGraph" fill="true" legendCols="300"
+								stacked="true" xaxisAngle="45" showMarkers="false" live="true"
+								title="Memory Consume"
+								value="#{engineLogConsoleController.linearMemoryConsumeModel}"
+								style="height:300px;margin-top:20px" /-->
+						</h:form>
+					</p:tab>
+					<!-- p:tab title="Access Map">
+							
+						</p:tab-->
+				</p:tabView>
+				<h3>Service</h3>
+				<p:commandButton value="Restart" type="button" />
+			</p:tab>
+			<p:tab title="Setup">
+				<p:tabView cache="false" dynamic="false">
+					<p:tab title="Input Process">
+						<p:tabView cache="false" dynamic="false">
+							<p:tab title="Interpreters">
+								<h:form>
+									<p:messages id="messages" showDetail="true" closable="true" />
+									<p:dataTable var="inputInterpretation"
+										selection="#{inputInterpretationViewController.selectedComponent}"
+										value="#{inputInterpretationViewController.avaibleComponents}"
+										rowKey="#{inputInterpretation.id}" selectionMode="single">
+										<p:ajax event="rowSelect"
+											listener="#{inputInterpretationViewController.onRowSelect}"
+											update="@form" />
+										<p:ajax event="rowUnselect"
+											listener="#{inputInterpretationViewController.onRowUnselect}"
+											update="@form" />
+										<p:column>
+											<h:outputText value="#{inputInterpretation.id}" />
+										</p:column>
+										<p:column headerText="status">
+											<p:graphicImage rendered="#{inputInterpretation.inTrasition}"
+												style="margin-right: 10px;"
+												value="../resources/images/loading.gif" alt="running" />
+											<h:outputText value="#{inputInterpretation.status}" />
+										</p:column>
+									</p:dataTable>
+									<p:tabView
+										rendered="#{inputInterpretationViewController.selectedComponent != null}"
+										cache="false" dynamic="false">
+										<p:tab title="Params">
+											<p:dataTable editable="true" editMode="cell" var="inp"
+												rowKey="#{inp.label}"
+												value="#{inputInterpretationViewController.selectedComponent.entries}">
+												<p:column headerText="Param">
+													<h:outputText value="#{inp.key}" />
+												</p:column>
+
+												<p:column headerText="Value">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText value="#{inp.value}" />
+														</f:facet>
+														<f:facet name="input">
+															<p:inputText value="#{inp.value}" style="width:96%" />
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+											</p:dataTable>
+											<p:outputPanel
+												rendered="#{inputInterpretationViewController.selectedComponent != null}"
+												style="margin-top:10px;text-align:right;">
+												<p:commandButton
+													action="#{inputInterpretationViewController.save}"
+													disabled="#{inputInterpretationViewController.selectedComponent == null}"
+													value="Apply" update="@form" />
+											</p:outputPanel>
+										</p:tab>
+										<p:tab title="About">
+											<h:panelGrid columns="2">
+												<h:outputText value="Author(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{inputInterpretationViewController.selectedComponent.author}" />
+
+												<h:outputText value="Contact(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{inputInterpretationViewController.selectedComponent.contact}" />
+
+												<h:outputText value="Description: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{inputInterpretationViewController.selectedComponent.description}" />
+
+												<h:outputText value="License: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{inputInterpretationViewController.selectedComponent.license}" />
+											</h:panelGrid>
+										</p:tab>
+									</p:tabView>
+									<p:outputPanel
+										rendered="#{inputInterpretationViewController.selectedComponent != null}"
+										style="margin-top:10px;">
+										<p:commandButton
+											disabled="#{inputInterpretationViewController.selectedComponent.active || inputInterpretationViewController.selectedComponent.inTrasition}"
+											action="#{inputInterpretationViewController.start}"
+											update="@form" value="Start" />
+										<p:commandButton
+											disabled="#{!inputInterpretationViewController.selectedComponent.active || inputInterpretationViewController.selectedComponent.inTrasition}"
+											action="#{inputInterpretationViewController.stop}"
+											update="@form" style="margin-left:5px;" value="Stop" />
+									</p:outputPanel>
+								</h:form>
+							</p:tab>
+							<p:tab title="Retrievers">
+								<h:form>
+									<p:messages id="messages" showDetail="true" closable="true" />
+									<p:dataTable var="inputInterpretation"
+										selection="#{kbConsultingViewController.selectedComponent}"
+										value="#{kbConsultingViewController.avaibleComponents}"
+										rowKey="#{inputInterpretation.id}" selectionMode="single">
+										<p:ajax event="rowSelect"
+											listener="#{kbConsultingViewController.onRowSelect}"
+											update="@form" />
+										<p:ajax event="rowUnselect"
+											listener="#{kbConsultingViewController.onRowUnselect}"
+											update="@form" />
+										<p:column>
+											<h:outputText value="#{inputInterpretation.id}" />
+										</p:column>
+										<p:column headerText="status">
+											<p:graphicImage rendered="#{inputInterpretation.inTrasition}"
+												style="margin-right: 10px;"
+												value="../resources/images/loading.gif" alt="running" />
+											<h:outputText value="#{inputInterpretation.status}" />
+										</p:column>
+									</p:dataTable>
+									<p:tabView
+										rendered="#{kbConsultingViewController.selectedComponent != null}"
+										cache="false" dynamic="false">
+										<p:tab title="Params">
+											<p:dataTable editable="true" editMode="cell" var="inp"
+												rowKey="#{inp.label}"
+												value="#{kbConsultingViewController.selectedComponent.entries}">
+												<p:column headerText="Param">
+													<h:outputText value="#{inp.key}" />
+												</p:column>
+
+												<p:column headerText="Value">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText value="#{inp.value}" />
+														</f:facet>
+														<f:facet name="input">
+															<p:inputText value="#{inp.value}" style="width:96%" />
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+											</p:dataTable>
+											<p:outputPanel
+												rendered="#{kbConsultingViewController.selectedComponent != null}"
+												style="margin-top:10px;text-align:right;">
+												<p:commandButton action="#{kbConsultingViewController.save}"
+													disabled="#{kbConsultingViewController.selectedComponent == null}"
+													value="Apply" update="@form" />
+											</p:outputPanel>
+										</p:tab>
+										<p:tab title="About">
+											<h:panelGrid columns="2">
+												<h:outputText value="Author(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{kbConsultingViewController.selectedComponent.author}" />
+
+												<h:outputText value="Contact(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{kbConsultingViewController.selectedComponent.contact}" />
+
+												<h:outputText value="Description: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{kbConsultingViewController.selectedComponent.description}" />
+
+												<h:outputText value="License: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{kbConsultingViewController.selectedComponent.license}" />
+											</h:panelGrid>
+										</p:tab>
+									</p:tabView>
+									<p:outputPanel
+										rendered="#{kbConsultingViewController.selectedComponent != null}"
+										style="margin-top:10px;">
+										<p:commandButton
+											disabled="#{kbConsultingViewController.selectedComponent.active || kbConsultingViewController.selectedComponent.inTrasition}"
+											action="#{kbConsultingViewController.start}" update="@form"
+											value="Start" />
+										<p:commandButton
+											disabled="#{!kbConsultingViewController.selectedComponent.active || kbConsultingViewController.selectedComponent.inTrasition}"
+											action="#{kbConsultingViewController.stop}" update="@form"
+											style="margin-left:5px;" value="Stop" />
+									</p:outputPanel>
+								</h:form>
+							</p:tab>
+							<p:tab title="Sythesizers">
+								<h:form>
+									<p:messages id="messages" showDetail="true" closable="true" />
+									<p:dataTable var="inputInterpretation"
+										selection="#{synthesizerViewController.selectedComponent}"
+										value="#{synthesizerViewController.avaibleComponents}"
+										rowKey="#{inputInterpretation.id}" selectionMode="single">
+										<p:ajax event="rowSelect"
+											listener="#{synthesizerViewController.onRowSelect}"
+											update="@form" />
+										<p:ajax event="rowUnselect"
+											listener="#{synthesizerViewController.onRowUnselect}"
+											update="@form" />
+										<p:column>
+											<h:outputText value="#{inputInterpretation.id}" />
+										</p:column>
+										<p:column headerText="status">
+											<p:graphicImage rendered="#{inputInterpretation.inTrasition}"
+												style="margin-right: 10px;"
+												value="../resources/images/loading.gif" alt="running" />
+											<h:outputText value="#{inputInterpretation.status}" />
+										</p:column>
+									</p:dataTable>
+									<p:tabView
+										rendered="#{synthesizerViewController.selectedComponent != null}"
+										cache="false" dynamic="false">
+										<p:tab title="Params">
+											<p:dataTable editable="true" editMode="cell" var="inp"
+												rowKey="#{inp.label}"
+												value="#{synthesizerViewController.selectedComponent.entries}">
+												<p:column headerText="Param">
+													<h:outputText value="#{inp.key}" />
+												</p:column>
+
+												<p:column headerText="Value">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText value="#{inp.value}" />
+														</f:facet>
+														<f:facet name="input">
+															<p:inputText value="#{inp.value}" style="width:96%" />
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+											</p:dataTable>
+											<p:outputPanel
+												rendered="#{synthesizerViewController.selectedComponent != null}"
+												style="margin-top:10px;text-align:right;">
+												<p:commandButton action="#{synthesizerViewController.save}"
+													disabled="#{synthesizerViewController.selectedComponent == null}"
+													value="Apply" update="@form" />
+											</p:outputPanel>
+										</p:tab>
+										<p:tab title="About">
+											<h:panelGrid columns="2">
+												<h:outputText value="Author(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{synthesizerViewController.selectedComponent.author}" />
+
+												<h:outputText value="Contact(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{synthesizerViewController.selectedComponent.contact}" />
+
+												<h:outputText value="Description: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{synthesizerViewController.selectedComponent.description}" />
+
+												<h:outputText value="License: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{synthesizerViewController.selectedComponent.license}" />
+											</h:panelGrid>
+										</p:tab>
+									</p:tabView>
+									<p:outputPanel
+										rendered="#{synthesizerViewController.selectedComponent != null}"
+										style="margin-top:10px;">
+										<p:commandButton
+											disabled="#{synthesizerViewController.selectedComponent.active || synthesizerViewController.selectedComponent.inTrasition}"
+											action="#{synthesizerViewController.start}" update="@form"
+											value="Start" />
+										<p:commandButton
+											disabled="#{!synthesizerViewController.selectedComponent.active || synthesizerViewController.selectedComponent.inTrasition}"
+											action="#{synthesizerViewController.stop}" update="@form"
+											style="margin-left:5px;" value="Stop" />
+									</p:outputPanel>
+								</h:form>
+							</p:tab>
+							<p:tab title="Resolvers">
+								<h:form>
+									<p:messages id="messages" showDetail="true" closable="true" />
+									<p:dataTable var="inputInterpretation"
+										selection="#{resolverViewController.selectedComponent}"
+										value="#{resolverViewController.avaibleComponents}"
+										rowKey="#{inputInterpretation.id}" selectionMode="single">
+										<p:ajax event="rowSelect"
+											listener="#{resolverViewController.onRowSelect}"
+											update="@form" />
+										<p:ajax event="rowUnselect"
+											listener="#{resolverViewController.onRowUnselect}"
+											update="@form" />
+										<p:column>
+											<h:outputText value="#{inputInterpretation.id}" />
+										</p:column>
+										<p:column headerText="status">
+											<p:graphicImage rendered="#{inputInterpretation.inTrasition}"
+												style="margin-right: 10px;"
+												value="../resources/images/loading.gif" alt="running" />
+											<h:outputText value="#{inputInterpretation.status}" />
+										</p:column>
+									</p:dataTable>
+									<p:tabView
+										rendered="#{resolverViewController.selectedComponent != null}"
+										cache="false" dynamic="false">
+										<p:tab title="Params">
+											<p:dataTable editable="true" editMode="cell" var="inp"
+												rowKey="#{inp.label}"
+												value="#{resolverViewController.selectedComponent.entries}">
+												<p:column headerText="Param">
+													<h:outputText value="#{inp.key}" />
+												</p:column>
+
+												<p:column headerText="Value">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText value="#{inp.value}" />
+														</f:facet>
+														<f:facet name="input">
+															<p:inputText value="#{inp.value}" style="width:96%" />
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+											</p:dataTable>
+											<p:outputPanel
+												rendered="#{resolverViewController.selectedComponent != null}"
+												style="margin-top:10px;text-align:right;">
+												<p:commandButton action="#{resolverViewController.save}"
+													disabled="#{resolverViewController.selectedComponent == null}"
+													value="Apply" update="@form" />
+											</p:outputPanel>
+										</p:tab>
+										<p:tab title="About">
+											<h:panelGrid columns="2">
+												<h:outputText value="Author(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{resolverViewController.selectedComponent.author}" />
+
+												<h:outputText value="Contact(s): " />
+												<h:outputText styleClass="outputLabel"
+													value="#{resolverViewController.selectedComponent.contact}" />
+
+												<h:outputText value="Description: " />
+												<h:outputText styleClass="outputLabel"
+													value="#{resolverViewController.selectedComponent.description}" />
+											</h:panelGrid>
+										</p:tab>
+									</p:tabView>
+									<p:outputPanel
+										rendered="#{resolverViewController.selectedComponent != null}"
+										style="margin-top:10px;">
+										<p:commandButton
+											disabled="#{resolverViewController.selectedComponent.active || resolverViewController.selectedComponent.inTrasition}"
+											action="#{resolverViewController.start}" update="@form"
+											value="Start" />
+										<p:commandButton
+											disabled="#{!resolverViewController.selectedComponent.active || resolverViewController.selectedComponent.inTrasition}"
+											action="#{resolverViewController.stop}" update="@form"
+											style="margin-left:5px;" value="Stop" />
+									</p:outputPanel>
+								</h:form>
+							</p:tab>
+						</p:tabView>
+					</p:tab>
+					<p:tab title="Renders">
+						<h:form>
+							<p:messages id="messages" showDetail="true" closable="true" />
+							<p:dataTable var="inputInterpretation"
+								selection="#{renderViewController.selectedComponent}"
+								value="#{renderViewController.avaibleComponents}"
+								rowKey="#{inputInterpretation.id}" selectionMode="single">
+								<p:ajax event="rowSelect"
+									listener="#{renderViewController.onRowSelect}" update="@form" />
+								<p:ajax event="rowUnselect"
+									listener="#{renderViewController.onRowUnselect}"
+									update="@form" />
+								<p:column>
+									<h:outputText value="#{inputInterpretation.id}" />
+								</p:column>
+								<p:column headerText="status">
+									<p:graphicImage rendered="#{inputInterpretation.inTrasition}"
+										style="margin-right: 10px;"
+										value="../resources/images/loading.gif" alt="running" />
+									<h:outputText value="#{inputInterpretation.status}" />
+								</p:column>
+							</p:dataTable>
+							<p:tabView
+								rendered="#{renderViewController.selectedComponent != null}"
+								cache="false" dynamic="false">
+								<p:tab title="Params">
+									<p:dataTable editable="true" editMode="cell" var="inp"
+										rowKey="#{inp.label}"
+										value="#{renderViewController.selectedComponent.entries}">
+										<p:column headerText="Param">
+											<h:outputText value="#{inp.key}" />
+										</p:column>
+
+										<p:column headerText="Value">
+											<p:cellEditor>
+												<f:facet name="output">
+													<h:outputText value="#{inp.value}" />
+												</f:facet>
+												<f:facet name="input">
+													<p:inputText value="#{inp.value}" style="width:96%" />
+												</f:facet>
+											</p:cellEditor>
+										</p:column>
+									</p:dataTable>
+									<p:outputPanel
+										rendered="#{renderViewController.selectedComponent != null}"
+										style="margin-top:10px;text-align:right;">
+										<p:commandButton action="#{renderViewController.save}"
+											disabled="#{renderViewController.selectedComponent == null}"
+											value="Apply" update="@form" />
+									</p:outputPanel>
+								</p:tab>
+								<p:tab title="About">
+									<h:panelGrid columns="2">
+										<h:outputText value="Author(s): " />
+										<h:outputText styleClass="outputLabel"
+											value="#{renderViewController.selectedComponent.author}" />
+
+										<h:outputText value="Contact(s): " />
+										<h:outputText styleClass="outputLabel"
+											value="#{renderViewController.selectedComponent.contact}" />
+
+										<h:outputText value="Description: " />
+										<h:outputText styleClass="outputLabel"
+											value="#{renderViewController.selectedComponent.description}" />
+									</h:panelGrid>
+								</p:tab>
+							</p:tabView>
+							<p:outputPanel
+								rendered="#{renderViewController.selectedComponent != null}"
+								style="margin-top:10px;">
+								<p:commandButton
+									disabled="#{renderViewController.selectedComponent.active || renderViewController.selectedComponent.inTrasition}"
+									action="#{renderViewController.start}" update="@form"
+									value="Start" />
+								<p:commandButton
+									disabled="#{!renderViewController.selectedComponent.active || renderViewController.selectedComponent.inTrasition}"
+									action="#{renderViewController.stop}" update="@form"
+									style="margin-left:5px;" value="Stop" />
+							</p:outputPanel>
+						</h:form>							
+					</p:tab>
+					<p:tab title="Services">
+						<h:form>
+							<p:messages id="messages" showDetail="true" closable="true" />
+							<p:dataTable var="serv"
+								selection="#{serviceViewController.selectedComponent}"
+								value="#{serviceViewController.avaibleComponents}"
+								rowKey="#{serv.id}" selectionMode="single">
+								<p:ajax event="rowSelect"
+									listener="#{serviceViewController.onRowSelect}" update="@form" />
+								<p:ajax event="rowUnselect"
+									listener="#{serviceViewController.onRowUnselect}"
+									update="@form" />
+								<p:column>
+									<h:outputText value="#{serv.id}" />
+								</p:column>
+								<p:column headerText="status">
+									<p:graphicImage rendered="#{serv.inTrasition}"
+										style="margin-right: 10px;"
+										value="../resources/images/loading.gif" alt="running" />
+									<h:outputText value="#{serv.status}" />
+								</p:column>
+							</p:dataTable>
+							<p:tabView
+								rendered="#{serviceViewController.selectedComponent != null}"
+								cache="false" dynamic="false">
+								<p:tab title="Params">
+									<p:dataTable editable="true" editMode="cell" var="prop"
+										rowKey="#{prop.label}"
+										value="#{serviceViewController.selectedComponent.entries}">
+										<p:column headerText="Param">
+											<h:outputText value="#{prop.key}" />
+										</p:column>
+
+										<p:column headerText="Value">
+											<p:cellEditor>
+												<f:facet name="output">
+													<h:outputText value="#{prop.value}" />
+												</f:facet>
+												<f:facet name="input">
+													<p:inputText value="#{prop.value}" style="width:96%" />
+												</f:facet>
+											</p:cellEditor>
+										</p:column>
+									</p:dataTable>
+									<p:outputPanel
+										rendered="#{serviceViewController.selectedComponent != null}"
+										style="margin-top:10px;text-align:right;">
+										<p:commandButton action="#{serviceViewController.save}"
+											disabled="#{serviceViewController.selectedComponent == null}"
+											value="Apply" update="@form" />
+									</p:outputPanel>
+								</p:tab>
+								<p:tab title="About">
+									<h:panelGrid columns="2">
+										<h:outputText value="Author(s): " />
+										<h:outputText styleClass="outputLabel"
+											value="#{serviceViewController.selectedComponent.author}" />
+
+										<h:outputText value="Contact(s): " />
+										<h:outputText styleClass="outputLabel"
+											value="#{serviceViewController.selectedComponent.contact}" />
+
+										<h:outputText value="Description: " />
+										<h:outputText styleClass="outputLabel"
+											value="#{serviceViewController.selectedComponent.description}" />
+									</h:panelGrid>
+								</p:tab>
+							</p:tabView>
+							<p:outputPanel
+								rendered="#{serviceViewController.selectedComponent != null}"
+								style="margin-top:10px;">
+								<p:commandButton
+									disabled="#{serviceViewController.selectedComponent.active || serviceViewController.selectedComponent.inTrasition}"
+									action="#{serviceViewController.start}" update="@form"
+									value="Start" />
+								<p:commandButton
+									disabled="#{!serviceViewController.selectedComponent.active || serviceViewController.selectedComponent.inTrasition}"
+									action="#{serviceViewController.stop}" update="@form"
+									style="margin-left:5px;" value="Stop" />
+							</p:outputPanel>
+						</h:form>
+					</p:tab>
+					<p:tab title="Context">
+						<h:form>
+							<p:messages id="messages" showDetail="true" closable="true" />
+							<p:dataTable var="serv"
+								selection="#{contextViewController.selectedComponent}"
+								value="#{contextViewController.avaibleComponents}"
+								rowKey="#{serv.id}" selectionMode="single">
+								<p:ajax event="rowSelect"
+									listener="#{contextViewController.onRowSelect}" update="@form" />
+								<p:ajax event="rowUnselect"
+									listener="#{contextViewController.onRowUnselect}"
+									update="@form" />
+								<p:column>
+									<h:outputText value="#{serv.id}" />
+								</p:column>
+								<p:column headerText="status">
+									<p:graphicImage rendered="#{serv.inTrasition}"
+										style="margin-right: 10px;"
+										value="../resources/images/loading.gif" alt="running" />
+									<h:outputText value="#{serv.status}" />
+								</p:column>
+							</p:dataTable>
+							<p:tabView
+								rendered="#{contextViewController.selectedComponent != null}"
+								cache="false" dynamic="false">
+								<p:tab title="Params">
+									<p:dataTable editable="true" editMode="cell" var="prop"
+										rowKey="#{prop.label}"
+										value="#{contextViewController.selectedComponent.entries}">
+										<p:column headerText="Param">
+											<h:outputText value="#{prop.key}" />
+										</p:column>
+
+										<p:column headerText="Value">
+											<p:cellEditor>
+												<f:facet name="output">
+													<h:outputText value="#{prop.value}" />
+												</f:facet>
+												<f:facet name="input">
+													<p:inputText value="#{prop.value}" style="width:96%" />
+												</f:facet>
+											</p:cellEditor>
+										</p:column>
+									</p:dataTable>
+									<p:outputPanel
+										rendered="#{contextViewController.selectedComponent != null}"
+										style="margin-top:10px;text-align:right;">
+										<p:commandButton action="#{contextViewController.save}"
+											disabled="#{contextViewController.selectedComponent == null}"
+											value="Apply" update="@form" />
+									</p:outputPanel>
+								</p:tab>
+								<p:tab title="About">
+									<h:panelGrid columns="2">
+										<h:outputText value="Author(s): " />
+										<h:outputText styleClass="outputLabel"
+											value="#{contextViewController.selectedComponent.author}" />
+
+										<h:outputText value="Contact(s): " />
+										<h:outputText styleClass="outputLabel"
+											value="#{contextViewController.selectedComponent.contact}" />
+
+										<h:outputText value="Description: " />
+										<h:outputText styleClass="outputLabel"
+											value="#{contextViewController.selectedComponent.description}" />
+									</h:panelGrid>
+								</p:tab>
+							</p:tabView>
+							<p:outputPanel
+								rendered="#{contextViewController.selectedComponent != null}"
+								style="margin-top:10px;">
+								<p:commandButton
+									disabled="#{contextViewController.selectedComponent.active || contextViewController.selectedComponent.inTrasition}"
+									action="#{contextViewController.start}" update="@form"
+									value="Start" />
+								<p:commandButton
+									disabled="#{!contextViewController.selectedComponent.active || contextViewController.selectedComponent.inTrasition}"
+									action="#{contextViewController.stop}" update="@form"
+									style="margin-left:5px;" value="Stop" />
+							</p:outputPanel>
+						</h:form>
+					</p:tab>
+					<!-- p:tab title="Connectors">
+							    	
+						</p:tab-->
+				</p:tabView>
+			</p:tab>
+			<p:tab title="Test">
+				<p:commandButton value="Publish" type="button" />
+			</p:tab>
+		</p:tabView>
+	</p:outputPanel>
+</h:body>
+</html>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/javascript; charset=UTF-8"></meta>
+<title>sina :)</title>
+<link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/sina.css" />
+<script src="resources/js/jquery-1.10.2.min.js"> </script>
+</head>
+<body
+	style="height: 100%; width: 100%; margin: 0px; font-family: arial, sans-serif">
+	<!--START FLOAT MENU-->
+	<!-- Barra superior -->
+	<div
+		style="position: relative !important; top: 0px; left: 0px; z-index: 3;">
+		<div id="menu" class="menu"
+			style="height: 25px; font-size: 12px; font-weight: bold; vertical-align: middle; padding-top: 8px; background-color: black;">
+			<a style="margin-left: 15px; color: white; text-decoration: none;"
+				href="./"> <span>Search</span>
+			</a> <a style="margin-left: 15px; text-decoration: none;"
+				href="/main/data.html"> <span>API</span>
+			</a> <a style="margin-left: 15px; text-decoration: none;"
+				href="about.html"> <span>Labs</span>
+			</a> <a style="margin-left: 15px; text-decoration: none;"
+				href="about.html"> <span>About</span>
+			</a> <a style="margin-left: 15px; text-decoration: none;"
+				href="/main/data.html"> <span>Team</span>
+			</a> <a style="margin-left: 15px; text-decoration: none;"
+				href="/main/data.html"> <span>Publications</span>
+			</a> <a style="margin-left: 15px; text-decoration: none;"
+				href="http://aksw.org"> <span>AKSW</span>
+			</a>
+		</div>
+	</div>
+	<div>
+		<span>
+			<div>
+				<div style="margin-top: 10px; margin-left: 10px;">
+					<div align="left"
+						style="background: url(resources/images/logo.png) no-repeat; background-size: 75px 40px; height: 40px; width: 75px; position: absolute;" />
+
+				</div>
+			</div>
+		</span>
+		<div style="font-weight: bold; margin-top: 10px;">
+			<!-- >a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+					<span>Web</span>
+				</a>
+				<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+					<span>DBpedia</span>
+				</a>
+				<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+					<span>Life Science</span>
+				</a>
+				<a style="margin-left: 15px; text-decoration: none;color:rgb(162, 150, 150);" href="/main/data.html">
+					<span>Geo</span>
+				</a-->
+		</div>
+	</div>
+	<!-- ui:repeat-->
+	<div
+		style="height: 300px; background-color: rgb(241, 241, 241); box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25); margin: 10px;">
+		<h3 id="label" style="margin: 5px;">Label</h3>
+		<div id="image" style="float: left; margin: 10px;" />
+		<div id="content" style="float: left;">
+			<div id="comment" style="margin: 10px;"></div>
+			<a id="page" style="margin: 10px; font-size: small;" href=""
+				target="_blank"></a>
+			<script><!--
+						(function() {var jsonFile = "http://dbpedia.org/data/CD_Castell%C3%B3n.json";jQuery.getJSON(jsonFile, function(data) { 
+							var l = (data["http://dbpedia.org/resource/CD_Castell%C3%B3n"]["http://www.w3.org/2000/01/rdf-schema#label"]);
+							var c = (data["http://dbpedia.org/resource/CD_Castell%C3%B3n"]["http://www.w3.org/2000/01/rdf-schema#comment"]);
+							var h = (data["http://dbpedia.org/resource/CD_Castell%C3%B3n"]["http://xmlns.com/foaf/0.1/homepage"]);
+							var d = (data["http://dbpedia.org/resource/CD_Castell%C3%B3n"]["http://xmlns.com/foaf/0.1/depiction"]);
+							document.getElementById("label").innerHTML = l[0].value;
+							document.getElementById("comment").innerHTML = c[0].value;
+							document.getElementById("page").innerHTML = h[0].value;
+							document.getElementById("page").href = h[0].value;
+							var picture = d[0].value;
+							jQuery( "<img\/>" ).attr( "src", "http://upload.wikimedia.org/wikipedia/en/1/14/Cd_castell%C3%B3n_200p.png" ).css( "height", "auto" ).css( "width", 50 ).error(function(element){alert("erro");picture = picture.replace('commons','en');alert(jQuery( this ).attr("src"));jQuery( this ).attr( "src", picture );}).appendTo( "#image" );
+							//jQuery( "<img\/>" ).attr( "src", picture ).css( "height", "auto" ).css( "width", 50 ).appendTo( "#image" );
+						});})();
+					//--></script>
+		</div>
+	</div>
+	<!--  /ui:repeat-->
+</body>
+</html>
