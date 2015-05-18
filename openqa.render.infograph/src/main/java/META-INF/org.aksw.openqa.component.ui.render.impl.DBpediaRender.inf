@@ -1,0 +1,6 @@
+version=1.0
+label=DBpediaRender
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+description=This InfoGraph render set of resources or resources from DBpedia. Literal (LITERAL_TYPE) or Resources (URL_TYPE).
+license=Apache License 2.0

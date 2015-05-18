@@ -1,0 +1,6 @@
+version=1.0
+label=DBpediaSPARQLRender
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+description=This InfoGraph render SPARQL queries. It uses the attribute SPARQL_TYPE.
+license=Apache License 2.0

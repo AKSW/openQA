@@ -1,0 +1,3 @@
+org.aksw.openqa.component.ui.render.impl.DBpediaRenderFactory
+org.aksw.openqa.component.ui.render.impl.DBpediaSPARQLQueryRenderFactory
+org.aksw.openqa.component.ui.render.impl.DBpediaResultRenderFactory
