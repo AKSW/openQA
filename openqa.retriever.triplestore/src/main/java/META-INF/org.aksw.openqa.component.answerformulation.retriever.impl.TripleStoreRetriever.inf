@@ -1,0 +1,9 @@
+version=1.0
+label=TriplestoreRetriever
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+description=This retriever was developed to handle with SPARQL queries.
+			It use´s Jena Client to consult Triple Stores.
+			The Triple Stores endpoints can be set over the param END_POINT, and DEFAULT_GRAPH.
+			To be processed by this retriever the tokens should have the attribute SPARQL.
+license=Apache License 2.0
