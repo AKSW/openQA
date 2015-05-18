@@ -1,0 +1,10 @@
+version=0.6b
+label=HelloWorldRetriever
+API=1.0
+input=[{"label":"MATRIX_LINE","type":"org.aksw.openqa.samples.example3.HelloWorldParameter"}]
+output=[{"label":"LITERAL_TEXT_PARAM","type":"java.lang.String"}]
+website=http://openqa.aksw.org
+contact=http://emarx.org
+author=Edgard Marx
+description=Hello World retriever of openQA framework.
+license=Apache License 2.0
