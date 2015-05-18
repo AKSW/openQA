@@ -1,0 +1,7 @@
+version=0.6b
+label=DefaultContext
+API=1.0
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+description=DefaultContext is an openQA default implementation for context.
+license=Apache License 2.0

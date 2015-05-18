@@ -1,0 +1,7 @@
+version=0.6b
+label=DefaultCache
+API=1.0
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+description=DefaultCache is an openQA Default implementation for cache.
+license=Apache License 2.0

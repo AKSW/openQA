@@ -1,0 +1,8 @@
+version=0.6b
+label=DefaultRDFThermSynthesizer
+API=1.0
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+website=http://openqa.aksw.org
+description=Synthesize multi-intances of an object.
+license=Apache License 2.0

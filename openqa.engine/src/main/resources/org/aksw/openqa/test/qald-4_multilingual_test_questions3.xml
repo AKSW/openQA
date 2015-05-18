@@ -1,0 +1,54 @@
+﻿<dataset id="qald-4_multilingual_test">
+
+<question aggregation="false" answertype="resource" id="48" onlydbo="true">
+<string lang="en"><![CDATA[What does CPU stand for?]]></string>
+<string lang="de"><![CDATA[Wofür steht CPU?]]></string>
+<string lang="es"><![CDATA[¿Qué abrevia CPU?]]></string>
+<string lang="it"><![CDATA[Che cosa significa CPU?]]></string>
+<string lang="fr"><![CDATA[Que veut dire CPU?]]></string>
+<string lang="nl"><![CDATA[Waarvoor staat de afkorting CPU?]]></string>
+<string lang="ro"><![CDATA[Ce înseamnă CPU?]]></string>
+<keywords lang="en"><![CDATA[CPU, stand for]]></keywords>
+<keywords lang="de"><![CDATA[CPU, stehen für]]></keywords>
+<keywords lang="es"><![CDATA[CPU, abreviación]]></keywords>
+<keywords lang="it"><![CDATA[CPU, significato]]></keywords>
+<keywords lang="fr"><![CDATA[CPU, signification]]></keywords>
+<keywords lang="nl"><![CDATA[CPU, staat voor]]></keywords>
+<keywords lang="ro"><![CDATA[CPU, înseamnă]]></keywords>
+</question>
+
+<question aggregation="false" answertype="resource" id="49" onlydbo="true">
+<string lang="en"><![CDATA[In which studio did the Beatles record their first album?]]></string>
+<string lang="de"><![CDATA[In welchem Studio haben die Beatles ihr erstes Album aufgenommen?]]></string>
+<string lang="es"><![CDATA[¿En qué estudio grabaron los Beatles su primer album?]]></string>
+<string lang="it"><![CDATA[In quali studio i Beatles hanno registrato il loro primo album?]]></string>
+<string lang="fr"><![CDATA[Dans quel studio a été enregistré le premier album des Beatles?]]></string>
+<string lang="nl"><![CDATA[In welke studio hadden de Beatles hun eerste album opgenomen?]]></string>
+<string lang="ro"><![CDATA[În ce studio au înregistrat Beatles primul lor albunm?]]></string>
+<keywords lang="en"><![CDATA[Beatles, record, first album, studio]]></keywords>
+<keywords lang="de"><![CDATA[Beatles, erstes Album, aufgenommen, Studio]]></keywords>
+<keywords lang="es"><![CDATA[Beatles, primer album, estudio]]></keywords>
+<keywords lang="it"><![CDATA[Beatles, registrare, primo album, studio]]></keywords>
+<keywords lang="fr"><![CDATA[Beatles, enregistré, premier album, studio]]></keywords>
+<keywords lang="nl"><![CDATA[Beatles, eerste album, opgenomen, studio]]></keywords>
+<keywords lang="ro"><![CDATA[Beatles, înregistrat, primul album, studio]]></keywords>
+</question>
+
+<question aggregation="false" answertype="resource" id="50" onlydbo="true">
+<string lang="en"><![CDATA[How many gold medals did Michael Phelps win at the 2008 Olympics?]]></string>
+<string lang="de"><![CDATA[Wieviele Goldmedaillen hat Michael Phelps während der Olympischen Spiele 2008 gewonnen?]]></string>
+<string lang="es"><![CDATA[¿Cuántas medallas de oro ganó Michael Phelps durante los juegos olímpicos de 2008?]]></string>
+<string lang="it"><![CDATA[Quante medaglie d'oro ha vinto Michael Phelps alle Olimpiadi del 2008?]]></string>
+<string lang="fr"><![CDATA[Combien de médailles d'or Michael Phelps a-t-il gagné aux jeux olympiques de 2008?]]></string>
+<string lang="nl"><![CDATA[Hoeveel gouden medailles heeft Michael Phelps op de Olympische Spelen van 2008 gewonnen?]]></string>
+<string lang="ro"><![CDATA[Câte medalii de aur a câștigat Michael Phelps la olimpiada din 2008?]]></string>
+<keywords lang="en"><![CDATA[Michael Phelps, gold medals, 2008 Olpympics]]></keywords>
+<keywords lang="de"><![CDATA[Michael Phelps, Goldmedaillen, Olympische Spiele 2008]]></keywords>
+<keywords lang="es"><![CDATA[Michael Phelps, medallas de oro, juegos olímpicos, 2008]]></keywords>
+<keywords lang="it"><![CDATA[Michael Phelps, medaglie d'oro, Olimpiadi del 2008]]></keywords>
+<keywords lang="fr"><![CDATA[Michael Phelps, médailles d'or, jeux olympiques, 2008]]></keywords>
+<keywords lang="nl"><![CDATA[Michael Phelps, gouden medailles, gewonnen, Olympische Spelen 2008]]></keywords>
+<keywords lang="ro"><![CDATA[Michael Phelps, medalii de aur, olimpiada din 2008]]></keywords>
+</question>
+
+</dataset>

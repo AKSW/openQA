@@ -1,0 +1,22 @@
+﻿<dataset id="qald-4_multilingual_test">
+
+
+<question aggregation="false" answertype="resource" id="50" onlydbo="true">
+<string lang="en"><![CDATA[How many gold medals did Michael Phelps win at the 2008 Olympics?]]></string>
+<string lang="de"><![CDATA[Wieviele Goldmedaillen hat Michael Phelps während der Olympischen Spiele 2008 gewonnen?]]></string>
+<string lang="es"><![CDATA[¿Cuántas medallas de oro ganó Michael Phelps durante los juegos olímpicos de 2008?]]></string>
+<string lang="it"><![CDATA[Quante medaglie d'oro ha vinto Michael Phelps alle Olimpiadi del 2008?]]></string>
+<string lang="fr"><![CDATA[Combien de médailles d'or Michael Phelps a-t-il gagné aux jeux olympiques de 2008?]]></string>
+<string lang="nl"><![CDATA[Hoeveel gouden medailles heeft Michael Phelps op de Olympische Spelen van 2008 gewonnen?]]></string>
+<string lang="ro"><![CDATA[Câte medalii de aur a câștigat Michael Phelps la olimpiada din 2008?]]></string>
+<keywords lang="en"><![CDATA[Michael Phelps, gold medals, 2008 Olpympics]]></keywords>
+<keywords lang="de"><![CDATA[Michael Phelps, Goldmedaillen, Olympische Spiele 2008]]></keywords>
+<keywords lang="es"><![CDATA[Michael Phelps, medallas de oro, juegos olímpicos, 2008]]></keywords>
+<keywords lang="it"><![CDATA[Michael Phelps, medaglie d'oro, Olimpiadi del 2008]]></keywords>
+<keywords lang="fr"><![CDATA[Michael Phelps, médailles d'or, jeux olympiques, 2008]]></keywords>
+<keywords lang="nl"><![CDATA[Michael Phelps, gouden medailles, gewonnen, Olympische Spelen 2008]]></keywords>
+<keywords lang="ro"><![CDATA[Michael Phelps, medalii de aur, olimpiada din 2008]]></keywords>
+</question>
+
+
+</dataset>
