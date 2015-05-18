@@ -1,0 +1,7 @@
+label=TBSLInterpreter
+version=0.6b
+API=1.0
+author=Edgard Marx
+contact=http://aksw.org/EdgardMarx
+description=This implementation is a plug-in for TBSL (http://svn.aksw.org/papers/2013/WebSemantic_SINA/public.pdf).
+license=Apache License 2.0
