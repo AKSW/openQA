@@ -1,4 +1,4 @@
-Package: [[name]]
+Package: openqa-webapp
 Version: [[version]]
 Section: web
 Priority: optional
