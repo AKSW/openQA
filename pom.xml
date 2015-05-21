@@ -4,6 +4,11 @@
   <artifactId>parent</artifactId>
   <version>0.0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+  <properties>
+    <deb.webapp.output>/usr/share/lib/openqa/webserver</deb.webapp.output>
+    <deb.webapp.output.plugins>${deb.webapp.output}/plugins/</deb.webapp.output.plugins>
+  </properties>
   
   <build>
     <finalName>${project.artifactId}-${project.version}-r${buildNumber}</finalName>
