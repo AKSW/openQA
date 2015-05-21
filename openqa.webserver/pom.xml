@@ -41,7 +41,7 @@
 					<excludes/>
 					<mapper>
 					  <type>perm</type>
-					  <prefix>/usr/share/lib/openqa/${project.artifactId}</prefix>
+					  <prefix>${deb.webapp.output}</prefix>
 					</mapper>
 				  </data>
 				</dataSet>
