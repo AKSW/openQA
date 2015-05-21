@@ -1,0 +1,9 @@
+Package: openqa-tbsl-plugin
+Version: [[version]]
+Section: web
+Priority: optional
+Architecture: all
+Depends: openqa-webapp
+Maintainer: Edgard Marx <marx@informatik.uni-leipzig.de>
+Description: openQA webapp plugin tbsl plugin
+Distribution: ldstack-nightly
