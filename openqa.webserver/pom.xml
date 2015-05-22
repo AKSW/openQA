@@ -31,17 +31,33 @@
 			  <configuration>
 				<dataSet>
 				  <data>
-					<type>directory</type>
-					<src>${project.basedir}/src/deb/resources</src>
+					<type>file</type>
+					<src>${project.basedir}/src/deb/resources/openqa.xml</src>
+					<mapper>
+					  <type>perm</type>
+					  <prefix>/etc/tomcat7/Catalina/localhost</prefix>
+					</mapper>
+				  </data>
+				  <data>
+				  	<type>file</type>
+					<src>${project.basedir}/src/deb/resources/log4j.properties</src>
+					<mapper>
+					  <type>perm</type>
+					  <prefix>${deb.webapp.output}/WEB-INF/classes/</prefix>
+					  <user>tomcat7</user>
+					  <group>tomcat7</group>
+					</mapper>
 				  </data>
 				  <data>
 					<src>${project.basedir}/target/${project.artifactId}-${project.version}-r${buildNumber}/</src>
 					<type>directory</type>
 					<includes />
-					<excludes/>
+					<excludes>WEB-INF/classes/log4j.properties</excludes>
 					<mapper>
 					  <type>perm</type>
 					  <prefix>${deb.webapp.output}</prefix>
+					  <user>tomcat7</user>
+					  <group>tomcat7</group>
 					</mapper>
 				  </data>
 				</dataSet>
