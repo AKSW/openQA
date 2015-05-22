@@ -37,7 +37,9 @@
 							<type>file</type>
 							<mapper>
 								<type>perm</type>
-								<prefix>/usr/share/lib/openqa/webserver/plugins/</prefix>
+								<prefix>${deb.webapp.output.plugins}</prefix>
+								<user>tomcat7</user>
+								<group>tomcat7</group>
 							</mapper>
 						</data>
 					</dataSet>
