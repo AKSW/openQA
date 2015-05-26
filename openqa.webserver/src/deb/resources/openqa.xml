@@ -1,0 +1,11 @@
+<Context path="/facete2"
+    docBase="/usr/share/lib/openqa/webserver"
+    crossContext="false"
+    reloadable="false">
+
+    <Parameter
+        name="contextConfigLocation"
+        value="workaround-for-JERSEY-2038"
+        override="false"
+    />
+</Context>

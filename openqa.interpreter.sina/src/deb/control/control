@@ -1,0 +1,9 @@
+Package: openqa-sina-plugin
+Version: [[version]]
+Section: web
+Priority: optional
+Architecture: all
+Depends: openqa-webapp
+Maintainer: Edgard Marx <marx@informatik.uni-leipzig.de>
+Description: openQA webapp plugin sina plugin
+Distribution: ldstack-nightly

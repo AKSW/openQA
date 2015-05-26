@@ -1,0 +1,9 @@
+Package: openqa-webapp
+Version: [[version]]
+Section: web
+Priority: optional
+Architecture: all
+Depends: tomcat7
+Maintainer: Edgard Marx <marx@informatik.uni-leipzig.de>
+Description: OpenQA Webapplication
+Distribution: ldstack-nightly
