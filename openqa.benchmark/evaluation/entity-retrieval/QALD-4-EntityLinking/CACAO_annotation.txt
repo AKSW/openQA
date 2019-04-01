@@ -1,0 +1,12 @@
+ID 	query 											resource								
+12 	how many, pages, War and Peace					res:War_and_Peace				
+13 	carrot cake, ingredients						res:Carrot_cake
+21 	birthplace, Bach								res:Bachs
+26 	actors, born, Berlin							res:Berlin
+30 	date, Halloween									res:Halloween
+32 	countries, pay, West African CFA franc			res:West_African_CFA_franc
+34 	first, climb, mount Everest						res:Mount_Everest
+36 	pope, succeed, Johannes Paul II					res:Pope_Paul_III								
+41 	writer, win, Nobel Prize in literature			res:Nobel_Prize_in_Literature												
+42 	University of Oxford, official color			res:University_of_Oxford     					
+44 	Lake Placid, depth								res:Lake_Placid_(Texas)

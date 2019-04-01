@@ -1,0 +1,11 @@
+ID 	query 											resource
+12 	how many, pages, War and Peace					res:Western_Sahara_War
+13 	carrot cake, ingredients						res:Carrot 
+21 	birthplace, Bach								res:Seattle_Mariners_minor_league_players
+26 	actors, born, Berlin							res:United_States_Court_of_Appeals_for_the_Ninth_Circuit
+30 	date, Halloween									res:Penn_State_Nittany_Lions_football_under_Joe_Paterno_(as_an_Independent)
+32 	countries, pay, West African CFA franc			res:Central_African_Republic, dbp:country
+34 	first, climb, mount Everest						dbp:first
+41 	writer, win, Nobel Prize in literature			dbp:writer
+42 	University of Oxford, official color			res:Honam_University
+44 	Lake Placid, depth								res:Natural_lake

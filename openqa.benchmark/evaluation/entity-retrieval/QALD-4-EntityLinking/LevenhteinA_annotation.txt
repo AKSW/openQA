@@ -1,0 +1,10 @@
+ID 	query 											resource
+12 	how many, pages, War and Peace					res:CMLL_Torneo_Gran_Alternativa
+13 	carrot cake, ingredients						res:Genoa_cake
+26 	actors, born, Berlin							res:1996%E2%80%9397_Nemzeti_Bajnoks%C3%A1g_I
+30 	date, Halloween									NONE
+32 	countries, pay, West African CFA franc			res:West_Virginia_Route_16
+34 	first, climb, mount Everest						NONE
+41 	writer, win, Nobel Prize in literature			NONE
+42 	University of Oxford, official color			res:Honam_University
+44 	Lake Placid, depth								dbp:lake
