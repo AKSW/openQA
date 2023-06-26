@@ -9,7 +9,7 @@ results and performance. *openQA* is an open source question answering framework
 domain experts. The aim of *openQA* is to provide a common platform that can be used to promote advances by easy 
 integration and measurement of different approaches. [more](https://bitbucket.org/emarx/openqa/wiki/Home)
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CntQDGj1PYQ/0.jpg)]([https://www.youtube.com/watch?v=CntQDGj1PYQ](https://www.youtube.com/embed/CntQDGj1PYQ))
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CntQDGj1PYQ/0.jpg)](https://www.youtube.com/watch?v=CntQDGj1PYQ)
 
 ##
 [Project Website](http://openqa.aksw.org) | [Download](http://openqa.aksw.org/download.xhtml)
