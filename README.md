@@ -8,6 +8,9 @@ still a substantial challenge. Users and researchers still face difficulties to 
 results and performance. *openQA* is an open source question answering framework that unifies approaches from several 
 domain experts. The aim of *openQA* is to provide a common platform that can be used to promote advances by easy 
 integration and measurement of different approaches. [more](https://bitbucket.org/emarx/openqa/wiki/Home)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CntQDGj1PYQ/0.jpg)]([https://www.youtube.com/watch?v=CntQDGj1PYQ](https://www.youtube.com/embed/CntQDGj1PYQ))
+
 ##
 [Project Website](http://openqa.aksw.org) | [Download](http://openqa.aksw.org/download.xhtml)
  | [FAQ](https://bitbucket.org/emarx/openqa/wiki/FAQ) | [License](https://tldrlegal.com/license/apache-license-2.0-%28apache-2.0%29#summary)
